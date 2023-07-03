@@ -1,0 +1,81 @@
+1) Git - at what particular part of time which person made which
+change where in the project.
+2) Github - online platform to hold git repository (folder to store files).
+3) type text.txt --> to show whats written in text file
+--> To create file ( type nul > FILE_NAME )
+4) git restore --staged file_name --> it wil; restore the added file which u 
+have done using the (git add) command.
+5) git log --> to see the entire history of the changing done of project.
+6) you cant simply delete a particular commit because each commit has hash id mean
+each commit is build on top of each other.
+7) You can unstage the commits
+8) To remove the commit copy the below hash id and write
+9) git reset HASH_ID_WHICH_U_COPIED
+10) when u do this commit gets deleted, the files are present in unstaged area.
+
+---STASH---
+
+1) u do this when u dont want to commit and also dont want to loose 
+the files, they are present in stash area.
+2) git stash
+3) git stash pop --> files which are present in stash area(unstaged area) comes to 
+the staged area.
+4) git stash clear --> files present in stash area gets deleted permanently.
+
+1) To attach local project to your Github
+--> git remote add origin LINK_OF_YOUR_REPO
+2) git remote -v --> to see the link(url) attached to your folder like fetch push
+3) git push origin master --> to push the files in github
+
+
+---BRANCH---
+
+1) git branch --> to see all branches
+2) git branch feature --> to create new branch 
+3) git checkout feature --> switches to the feature branche, anything you push is pushed in
+feature branch.
+4) git merge BRANCH_NAME --> it will merge your branch to main branch
+
+
+---WORKING ON SOMEONE ELSE PROJECT---
+
+1) First Fork the project
+2) then clone (copy of the project) it
+--> git clone URL
+3) From where u have forked the project (THE URL WHICH U USED TO CLONE) is known as upstream url by convention.
+4) git remote add upstream URL_OF_PROJECT_WHICH_U_WILL_CLONE
+(((Origin is used for your account project, upstream is used for others account project)))
+5) do one pull request, one branch, one bugs resolve (recommended)
+
+6) when you want to delete a commit from github
+--> do the copy hash and reset work
+--> then git add . --> then git stash --> git stash clear --> now force push ---> git push origin BRANCH_NAME -f
+
+
+---HOW TO SYNC THE PROJECT WITH MAIN WHEN PULL REQUEST IS ACCEPTED---
+
+1) One way is use the simply sync fork button in your github repo
+2) Manually through git
+--> switch to main branch --> git checkout main
+--> fetch all the commits and changes --> git fetch --all --prune
+--> reset the main branch of upstream and main branch of origin --> git reset --hard upstream/BRANCH_NAME
+3) git pull upstream MAIN_BRANCH
+ Three ways
+
+
+---Squash rebase---
+
+1) to add all the commits in one commit we use this
+2) copy the hash of below commit
+3) git rebase -i COPIED_HASH
+4) do git push origin BRANCH_NAME to see changes
+ 
+NOTE : when doing pick and squash change pick to s to merge the commits 
+and do Esc-->:-->x to writte something in new commit
+
+
+---Merge conflict---
+
+
+1) occurs when more than one person has the same change 
+2) resolve when pull request is merged
